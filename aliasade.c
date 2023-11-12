@@ -6,11 +6,8 @@
  * @name: the name of the alias
  * @value: the value of the alias
  */
-
-/* here comes the prototype */
 void __alias_add(alias_t **aliases, const char *name, const char *value)
 {
-	/*checks if the alias already exist*/
 	alias_t *alias = get_dict_node(aliases ? *aliases : NULL, name);
 
 	if (alias)
@@ -20,14 +17,13 @@ void __alias_add(alias_t **aliases, const char *name, const char *value)
 	}
 	else
 	{
-		/* add a new one if alias does not eixst */
 		add_dict_node_end(aliases, name, value);
 	}
 }
 
 
 /**
- * __alias_print - The alias will be printed
+ * __alias_print - print an alias
  * @alias: the alias to print
  */
 void __alias_print(alias_t *alias)
@@ -43,7 +39,7 @@ void __alias_print(alias_t *alias)
  * __alias - create and display aliases
  * @info: shell info struct
  *
- * Return: Nothing to return
+ * Return: status
  */
 int __alias(info_t *info)
 {
@@ -52,12 +48,9 @@ int __alias(info_t *info)
 	ssize_t name_len;
 
 	info->status = EXIT_SUCCESS;
-	/* checks if argument are intact */
-	if (*args0)
+	if (*args)
 	{
-		do
-		{
-			/* check if it is an alias */
+		do {
 			name_len = _strchr(*args, '=');
 			if (name_len == -1)
 			{
@@ -68,14 +61,12 @@ int __alias(info_t *info)
 				}
 				else
 				{
-					/* display error if no alias found */
 					perrorl("not found", *info->tokens, *args, NULL);
 					info->status = EXIT_FAILURE;
 				}
 			}
 			else
 			{
-				/* give update to the alias */
 				name = _strndup(*args, name_len);
 				__alias_add(&info->aliases, name, *args + name_len + 1);
 				free(name);
@@ -84,10 +75,8 @@ int __alias(info_t *info)
 	}
 	else
 	{
-		/* print all alias */
 		for (alias = info->aliases; alias; alias = alias->next)
 			__alias_print(alias);
 	}
-
 	return (info->status);
 }

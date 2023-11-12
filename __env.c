@@ -2,18 +2,16 @@
 
 /**
   * __env - displays environment
-  * @format: arguments passed
+  * @info: arguments passed
   * Return: int
   */
-int __env(format_t *format)
+int __env(info_t *info)
 {
-	/* Pointer to traverse the linked list of environment variables */
 	env_t *var;
 
-	format->status = EXIT_SUCCESS;
+	info->status = EXIT_SUCCESS;
 
-	/* Iterate through the linked list of environment variables */
-	for (var = format->env; var; var = var->next)
+	for (var = info->env; var; var = var->next)
 	{
 		if (var->key)
 			write(STDOUT_FILENO, var->key, _strlen(var->key));
@@ -22,5 +20,5 @@ int __env(format_t *format)
 			write(STDOUT_FILENO, var->val, _strlen(var->val));
 		write(STDOUT_FILENO, "\n", 1);
 	}
-	return (format->status);
+	return (info->status);
 }

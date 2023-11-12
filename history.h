@@ -17,4 +17,4 @@ struct history
 	size_t n;
 };
 
-#endif
+#endif /* _HISTORY_H_ */
