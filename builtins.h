@@ -1,16 +1,17 @@
-#ifndef _BUILTINS_H_
 #define _BUILTINS_H_
+#ifndef _BUILTINS_H_
 
-#include <limits.h>
 #include <stdlib.h>
+#include <limits.h>
 #include <unistd.h>
 
+/* Macro headers */
+#include "path.h"
 #include "alias.h"
 #include "env.h"
-#include "error.h"
 #include "info.h"
-#include "path.h"
 #include "string.h"
+#include "error.h"
 #include "types.h"
 
 #define ALIAS_HELP "alias [KEY[=VALUE] ...]"
@@ -86,14 +87,15 @@ struct builtin
 const struct builtin *get_builtin(const char *name);
 const struct builtin *get_builtins(void);
 
-int __alias(info_t *info);
+/* list the prototype */
+int __setenv(info_t *info);
 int __cd(info_t *info);
 int __env(info_t *info);
 int __exec(info_t *info);
 int __exit(info_t *info);
+int __alias(info_t *info);
 int __help(info_t *info);
 int __history(info_t *info);
-int __setenv(info_t *info);
 int __unsetenv(info_t *info);
 
-#endif /* _BUILTINS_H_ */
+#endif
