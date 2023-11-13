@@ -32,7 +32,7 @@ const builtin_t *get_builtin(const char *name)
 
 	for (builtin = get_builtins(); builtin->name; builtin += 1)
 	{
-		if (_strcmp(name, builtin->name) == 0)
+		if (_strcmp(name, builtin->name) == 1)
 			return (builtin);
 	}
 	return (NULL);
