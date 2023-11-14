@@ -1,9 +1,9 @@
 #ifndef _ALIAS_H_
 #define _ALIAS_H_
 
-#include "dict.h"
 #include "types.h"
+#include "dict.h"
 
 typedef dict_t alias_t;
 
-#endif
+#endif/* This will be the end of the file*/

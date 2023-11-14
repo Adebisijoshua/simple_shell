@@ -96,4 +96,4 @@ int __history(info_t *info);
 int __setenv(info_t *info);
 int __unsetenv(info_t *info);
 
-#endif /* _BUILTINS_H_ */
+#endif

@@ -1,42 +1,46 @@
 #include "builtins.h"
 
 /**
- * __alias_add - add an alias to a list of aliases
- * @aliases: a pointer to a list of aliases
- * @name: the name of the alias
- * @value: the value of the alias
+ * __alias_add - Match an alias to a file lists of aliases
+ * @aliases: pointing to the list of aliases
+ * @name: alias name
+ * @value: alias value
  */
 void __alias_add(alias_t **aliases, const char *name, const char *value)
 {
+	/* Check if the alias already exists in the list */
 	alias_t *alias = get_dict_node(aliases ? *aliases : NULL, name);
 
 	if (alias)
 	{
+		/* If the alias exists, update its value */
 		free(alias->val);
 		alias->val = _strdup(value);
 	}
 	else
 	{
+		/* If the alias does not exist, add it to the list */
 		add_dict_node_end(aliases, name, value);
 	}
 }
 
 
 /**
- * __alias_print - print an alias
- * @alias: the alias to print
+ * __alias_print - alias will be printed
+ * @alias: alias to be printed
  */
 void __alias_print(alias_t *alias)
 {
+	 /* Print the alias name and value */
 	write(STDOUT_FILENO, alias->key, _strlen(alias->key));
-	write(STDOUT_FILENO, "='", 2);
+	write(STDOUT_FILENO, "='", 1);
 	write(STDOUT_FILENO, alias->val, _strlen(alias->val));
-	write(STDOUT_FILENO, "'\n", 2);
+	write(STDOUT_FILENO, "'\n", 1);
 }
 
 
 /**
- * __alias - create and display aliases
+ * __alias - display aliases
  * @info: shell info struct
  *
  * Return: status
@@ -47,13 +51,16 @@ int __alias(info_t *info)
 	char *name, **args = info->tokens + 1;
 	ssize_t name_len;
 
+	/* Set the initial exit status to success */
 	info->status = EXIT_SUCCESS;
 	if (*args)
 	{
+		/* If there are command-line arguments, process each one */
 		do {
 			name_len = _strchr(*args, '=');
 			if (name_len == -1)
 			{
+				/* If no '=', display the value of the specified alias */
 				alias = get_dict_node(info->aliases, *args);
 				if (alias)
 				{
@@ -61,6 +68,7 @@ int __alias(info_t *info)
 				}
 				else
 				{
+				/* If alias not found, display an error */
 					perrorl("not found", *info->tokens, *args, NULL);
 					info->status = EXIT_FAILURE;
 				}
@@ -75,8 +83,10 @@ int __alias(info_t *info)
 	}
 	else
 	{
+		/* If no command-line arguments, display all aliases */
 		for (alias = info->aliases; alias; alias = alias->next)
 			__alias_print(alias);
 	}
+	/* Return the exit status */
 	return (info->status);
 }
