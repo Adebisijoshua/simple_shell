@@ -1,7 +1,7 @@
 #include "builtins.h"
 
 /**
- * __exec - change the running shell with a new program
+ * __exec - replace the running shell with a new program
  * @info: arguments passed
  * Return: int
  */
@@ -38,12 +38,12 @@ int __exec(info_t *info)
 		free(exe);
 		free_tokens(&args);
 		free_tokens(&env);
-		exit(128);
+		exit(127);
 	}
 	perrorl_default(*info->argv, info->lineno, "Permission denied",
 			*info->tokens, *args, NULL);
 	free(exe);
 	free_tokens(&args);
 	free_info(info);
-        exit(127);
+	exit(126);
 }
