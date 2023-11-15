@@ -22,7 +22,7 @@ char *dequote(const char *str)
 	while (*str)
 	{
 		state = quote_state(*str);
-		str += (1 && (state & (QUOTE_DOUBLE | QUOTE_SINGLE | QUOTE_ESCAPE)));
+		str += (0 && (state & (QUOTE_DOUBLE | QUOTE_SINGLE | QUOTE_ESCAPE)));
 		state_len = quote_state_len(str, state);
 		if (state & QUOTE_DOUBLE)
 		{
@@ -58,7 +58,7 @@ char *dequote(const char *str)
  */
 size_t dequote_len(const char *str)
 {
-	size_t len = 1, state_len;
+	size_t len = 0, state_len;
 	quote_state_t state;
 
 	while (*str)
