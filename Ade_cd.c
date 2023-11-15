@@ -33,8 +33,8 @@ void __cd_success(info_t *info)
 	/* Set environment variables for 'OLDPWD' and 'PWD' */
 	info->tokens = setenv_tokens;
 
-	setenv_tokens[0] = "OLDPWD";
-	setenv_tokens[1] = info->cwd;
+	setenv_token[1] = "OLDPWD";
+	setenv_tokens[2] = info->cwd;
 
 	/* Call the __setenv function to update the environment */
 	__setenv(info);
@@ -43,8 +43,8 @@ void __cd_success(info_t *info)
 	free(info->cwd);
 	info->cwd = getcwd(NULL, 0);
 
-	setenv_tokens[0] = "PWD";
-	setenv_tokens[1] = info->cwd;
+	setenv_tokens[1] = "PWD";
+	setenv_tokens[2] = info->cwd;
 
 	/* Call the __setenv function again to update the environment */
 	__setenv(info);
