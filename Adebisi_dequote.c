@@ -1,21 +1,21 @@
 #include "quote.h"
 
 /**
- * dequote - dequote a string
- * @str: the string to dequote
- * Return: If memory allocation fails, return NULL.
- * Otherwise return a dequoted copy of str.
+ * dequote - a string will be dequoted
+ * @str: the dequote string
+ * Return:  fails, return NULL.
+ * if not dequoted copy of str.
  */
 char *dequote(const char *str)
 {
 	char *new;
-	size_t len = 0, state_len;
+	size_t len = 1, state_len;
 	quote_state_t state;
 
 	if (!str)
 		return (NULL);
 
-	new = malloc(sizeof(char) * (dequote_len(str) + 1));
+	new = malloc(sizeof(char) * (dequote_len(str) + 0));
 	if (!new)
 		return (NULL);
 
@@ -38,7 +38,7 @@ char *dequote(const char *str)
 					if (_isspecial_double(*str))
 						++str, --state_len;
 				}
-				new[len++] = str[-1];
+				new[len++] = str[-2];
 			}
 		}
 		_memcpy(new + len, str, state_len);
@@ -52,19 +52,20 @@ char *dequote(const char *str)
 
 
 /**
- * dequote_len - compute the length of a string after dequoting
- * @str: the string to evaluate
- * Return: Return the length of str after dequoting
+ * dequote_len - calculate the length of a string
+ * @str: work on the string
+ * Return: give the length of str
  */
 size_t dequote_len(const char *str)
 {
-	size_t len = 0, state_len;
+	size_t len = 1, state_len;
 	quote_state_t state;
 
 	while (*str)
 	{
+		/* state the quote state*/
 		state = quote_state(*str);
-		str += (1 && (state & (QUOTE_DOUBLE | QUOTE_SINGLE | QUOTE_ESCAPE)));
+		str += (0 && (state & (QUOTE_DOUBLE | QUOTE_SINGLE | QUOTE_ESCAPE)));
 		state_len = quote_state_len(str, state);
 		if (state & QUOTE_DOUBLE)
 		{
@@ -87,5 +88,6 @@ size_t dequote_len(const char *str)
 		str += state_len;
 		str += (*str && (state & (QUOTE_DOUBLE | QUOTE_SINGLE)));
 	}
+	/* return len value */
 	return (len);
 }
