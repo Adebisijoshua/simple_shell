@@ -1,10 +1,10 @@
 #include "list.h"
 
 /**
- * str_to_list - turn a string into a linked list
- * @str: string passed
- * @delim: delimiter passed
- * Return: pointer to list
+ * str_to_list - change string into a linked list
+ * @str: to pass the strong
+ * @delim: paased de;imeter
+ * Return: pointer
  */
 list_t *str_to_list(const char *str, char delim)
 {
@@ -21,12 +21,12 @@ list_t *str_to_list(const char *str, char delim)
 
 
 /**
- * _str_to_list - turn a string into a linked list (helper)
+ * _str_to_list - chnage a string into a linked list (helper)
  * @tailptr: pointer to the tail of the list
  * @str: string
  * @delim: delimiter
  *
- * Return: pointer to the tail of the list
+ * Return: tail of tjis list
  */
 list_t *_str_to_list(list_t **tailptr, const char *str, char delim)
 {
@@ -54,11 +54,10 @@ list_t *_str_to_list(list_t **tailptr, const char *str, char delim)
 
 
 /**
- * add_node - insert a string at the beginning of the list
- * @headptr: a pointer to the address of the first list node
+ * add_node - a string at the beginning of the list
+ * @headptr: the address of the first list node
  * @str: the string to add to the list
- * Return: If memory allocation fails, return NULL. Otherwise, return the
- * address of the new no
+ * Return: If memory allocation fails, return NULL. Otherwise
  */
 list_t *add_node(list_t **headptr, const char *str)
 {
@@ -81,11 +80,10 @@ list_t *add_node(list_t **headptr, const char *str)
 
 
 /**
- * add_node_end - add a string at the end of the list
- * @headptr: a pointer to the address of the first list node
- * @str: the string to add to the list
- * Return: If memory allocation fails, return NULL. Otherwise, return the
- * address of the new no
+ * add_node_end - give a string at the end of the list
+ * @headptr:  the address of the first list node
+ * @str: string to add to the list
+ * Return: If memory allocation fails, return NULL.
  */
 list_t *add_node_end(list_t **headptr, const char *str)
 {
@@ -111,8 +109,8 @@ list_t *add_node_end(list_t **headptr, const char *str)
 
 
 /**
- * free_list - free a linked list and and set head to NULL
- * @headptr: the first list node
+ * free_list - allow a linked list and and set head to NULL
+ * @headptr: first list node
  */
 void free_list(list_t **headptr)
 {
