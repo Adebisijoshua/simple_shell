@@ -7,8 +7,8 @@
  */
 int __help(struct info *info)
 {
-	const builtin_t *bp = NULL;
 	char * const *args = info->tokens + 1;
+	const builtin_t *bp = NULL;
 	const char *desc = NULL;
 	size_t len = 0;
 
@@ -35,7 +35,7 @@ int __help(struct info *info)
 			args += 1;
 		}
 		if (info->status == EXIT_FAILURE)
-			perrorl_default(*info->argv, info->lineno, "No topics match",
+			perrorl_default(*info->argv, info->lineno, "No topics that match",
 					*info->tokens, *(args - 1), NULL);
 		return (info->status);
 	}
@@ -45,5 +45,5 @@ int __help(struct info *info)
 		write(STDOUT_FILENO, bp->help, _strlen(bp->help));
 		write(STDOUT_FILENO, "\n", 1);
 	}
-	return (info->status);
+	return (info->status); /* return the value */
 }

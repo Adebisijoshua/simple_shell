@@ -1,12 +1,13 @@
 #include "builtins.h"
 
 /**
-  * __env - displays environment
-  * @info: arguments passed
+  * __env - shows  environment
+  * @info: This will pass the argument
   * Return: int
   */
 int __env(info_t *info)
 {
+	/* declare variable */
 	env_t *var;
 
 	info->status = EXIT_SUCCESS;
