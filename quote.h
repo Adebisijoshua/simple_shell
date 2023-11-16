@@ -2,14 +2,13 @@
 #define _QUOTE_H_
 
 #include <stdlib.h>
-
 #include "ctype.h"
 #include "string.h"
 
 /**
- * enum quote_state - a quote state mnemonic
- * @QUOTE_NONE: In an unquoted sequence of blanks
- * @QUOTE_WORD: In an unquoted sequence of non-blanks
+ * enum quote_state -  quote state mnemonic
+ * @QUOTE_NONE: unquoted sequence of blanks
+ * @QUOTE_WORD: unquoted sequence of non-blanks
  * @QUOTE_DOUBLE: In double quotes
  * @QUOTE_SINGLE: In single quotes
  * @QUOTE_ESCAPE: Following a backslash
@@ -42,4 +41,4 @@ int _isspecial_double(char c);
 char *dequote(const char *str);
 size_t dequote_len(const char *str);
 
-#endif
+#endif /* quote file */
