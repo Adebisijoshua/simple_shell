@@ -7,5 +7,6 @@
   */
 bool _isalpha(int c)
 {
+	/* Alphabet values to check*/
 	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
 }

@@ -1,8 +1,8 @@
 #include "hsh.h"
 
 /**
- * remove_comments - remove comments (#) from a command
- * @cmd: pointer to the cmd to process
+ * remove_comments - take away commen from in the command
+ * @cmd:address to the cmd to process
  */
 void remove_comments(cmdlist_t *cmd)
 {
@@ -19,7 +19,7 @@ void remove_comments(cmdlist_t *cmd)
 			free_tokens(&(cmd->tokens));
 			cmd->tokens = new;
 			free_cmdlist(&(cmd->next));
-			return;
+			return; /* return here */
 		}
 	}
 }

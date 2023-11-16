@@ -1,9 +1,9 @@
 #include "builtins.h"
 
 /**
-  * __unsetenv - unsets the environment variable
-  * @info: arguments passed
-  * Return: status
+  * __unsetenv - unpack environment variable
+  * @info: pass arguments
+  * Return: status of the arguments
   */
 int __unsetenv(info_t *info)
 {
@@ -17,7 +17,7 @@ int __unsetenv(info_t *info)
 	}
 	else
 	{
-		perrorl("Too few arguments.", *info->tokens, NULL);
+		perrorl("Too much  arguments.", *info->tokens, NULL);
 		info->status = EXIT_FAILURE;
 	}
 	return (info->status);
