@@ -3,7 +3,7 @@
 /**
  * __exec - replace the running shell with a new program
  * @info: arguments passed
- * Return: int
+ * Return: Return int
  */
 int __exec(info_t *info)
 {
@@ -17,6 +17,7 @@ int __exec(info_t *info)
 
 	if (_strchr(*args, '/') == -1)
 	{
+	
 		free_list(&info->path);
 		info->path = str_to_list(get_dict_val(info->env, "PATH"), ':');
 		exe = search_path(info, info->path);
@@ -27,14 +28,14 @@ int __exec(info_t *info)
 	}
 	info->tokens -= 1;
 
-	if (access(exe, X_OK) == 0)
+	if (access(exe, X_OK) == 0)/* declare access to be 0 */
 	{
 		env = dict_to_env(info->env);
 
 		free_info(info);
 		execve(exe, args, env);
 		perrorl_default(*info->argv, info->lineno, "Not found",
-				*info->tokens, *args, NULL);
+				*info->tokens, *args, NULL);/* Empty */
 		free(exe);
 		free_tokens(&args);
 		free_tokens(&env);
