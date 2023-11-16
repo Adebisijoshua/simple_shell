@@ -1,14 +1,15 @@
-#include "hsh.h"
 #include "getline.h"
+#include "hsh.h"
 
 /**
- * read_input - get input
+ * read_input - To get the input
  * @info: shell information
  *
- * Return: line size
+ * Return: Return size of the line
  */
 bool read_input(info_t *info)
 {
+	/* declare the variables */
 	char *line = NULL, *temp = NULL;
 
 	if (info->interactive)
@@ -33,19 +34,20 @@ bool read_input(info_t *info)
 		free(temp);
 		free(line);
 	}
-	return (info->line);
+	return (info->line); /* return info */
 }
 
 
 /**
- * _read_input - read a single line
- * @lineptr: line buffer
+ * _read_input - To read a single line
+ * @lineptr: buffer line
  * @fd: file descriptor to read from
  *
  * Return: ending quote state
  */
 quote_state_t _read_input(char **lineptr, int fd)
 {
+	/* declare sub prototype */
 	char *line = *lineptr = _getline(fd);
 	static quote_state_t state = QUOTE_NONE;
 	size_t index = 0;
@@ -70,5 +72,5 @@ quote_state_t _read_input(char **lineptr, int fd)
 			} while (line[index]);
 		}
 	}
-	return (state);
+	return (state); /* return state */
 }
