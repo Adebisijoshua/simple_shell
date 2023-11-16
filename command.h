@@ -12,14 +12,14 @@
  * @SEMICOLON: ;
  * @AMPERSAND: &
  * @AND: &&
- * @OR: ||
+ * @OR: |
  */
 typedef enum cmdlist_sep_n
 {
-	SEMICOLON = 1,
-	AMPERSAND = 2,
-	AND       = 4,
-	OR        = 8
+	SEMICOLON = 1, /* first one */
+	AMPERSAND = 4,/* second one */
+	AND       = 8,
+	OR        = 16
 } cmdlist_sep_n_t;
 
 /**
@@ -34,11 +34,12 @@ typedef struct cmdlist_sep
 } cmdlist_sep_t;
 
 /**
- * struct cmdlist - a linked list of commands
- * @next: the next command
- * @tree: a binary tree of commands
- * @tokens: the tokens for each command in the tree
+ * struct cmdlist -  list of commands
+ * @next:  next command
+ * @tree: a binary tree 
+ * @tokens:  each command in the tree will have it
  */
+
 struct cmdlist
 {
 	struct cmdlist *next;
@@ -62,16 +63,13 @@ struct cmdtree
 };
 
 cmdlist_t *cmd_to_list(const char *cmd);
+size_t split_cmd(char *cmd);/* I have error here */
 cmdlist_t *_cmd_to_list(cmdlist_t **tailptr, char *split, size_t count);
-
-size_t split_cmd(char *cmd);
-
 cmdlist_t *add_cmd_end(cmdlist_t **headptr, const char *cmd);
 cmdlist_t *del_cmd(cmdlist_t **headptr, size_t index);
 char **pop_cmd(cmdlist_t **headptr);
 void free_cmdlist(cmdlist_t **headptr);
-
 cmdtree_t *cmd_to_tree(const char * const *tokens);
 void free_cmdtree(cmdtree_t **rootptr);
 
-#endif /* _COMMAND_H_ */
+#endif /* This has the command file */
