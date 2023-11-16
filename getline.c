@@ -2,12 +2,11 @@
 #include "string.h"
 
 /**
- * _realloc - reallocate a buffer
- * @old: pointer to the buffer
- * @old_size: current size of the buffer
- * @new_size: desired size of the buffer
- * Return: If memory allocation fails, return NULL.
- * Otherwise, return a pointer to the new buffer.
+ * _realloc - buffer will be reallocated
+ * @old: address to the buffer
+ * @old_size: size of the current buffer
+ * @new_size: size of the buffer
+ * Return: If memory allocation fails, return EMPTY.
  */
 static void *_realloc(void *old, size_t old_size, size_t new_size)
 {
@@ -34,12 +33,11 @@ static void *_realloc(void *old, size_t old_size, size_t new_size)
 
 /**
  * _getline_next - read a line of input
- * @buf: pointer to the static buffer
- * @line: address of a pointer to the line
+ * @buf: ADDRESS to the buffer
+ * @line: address of  to the line
  * @size: address of a pointer to the line size
  * @n: number of characters to copy from the buffer
- * Return: If memory allocation fails, return NULL.
- * Otherwise, return a pointer to the line of input.
+ * Return: If memory allocation fails, return EMPTY
  */
 static char *_getline_next(buf_t *buf, char **line, size_t *size, size_t n)
 {
@@ -73,10 +71,10 @@ static char *_getline_next(buf_t *buf, char **line, size_t *size, size_t n)
 }
 
 /**
- * _getline_buf - create, get, and delete buffers
+ * _getline_buf - create, get, and remove buffers
  * @table: buffers indexed by file descriptor
- * @fd: file descriptor
- * Return: NULL or a pointer to the buffer associated with fd
+ * @fd:It will describe the file
+ * Return: Empty or a pointer to the buffer associated with fd
  */
 static buf_t *_getline_buf(buf_table_t *table, const int fd)
 {
@@ -85,6 +83,7 @@ static buf_t *_getline_buf(buf_table_t *table, const int fd)
 
 	if (table)
 	{
+		/* declare fd */
 		if (fd < 0)
 		{
 			for (index = 0; index < GETLINE_TABLE_SIZE; index += 1)
@@ -119,9 +118,9 @@ static buf_t *_getline_buf(buf_table_t *table, const int fd)
 }
 
 /**
- * _getline - read a line of input
- * @fd: file descriptor from which to read
- * Return: If an error occurs or there are no more lines, return NULL.
+ * _getline - line of input
+ * @fd: describtion file to be read
+ * Return: If an error occurs or there are no more lines, return EMPTY
  * Otherwise, return the next line of input.
  */
 char *_getline(const int fd)
@@ -147,7 +146,7 @@ char *_getline(const int fd)
 					if (_getline_next(buf, &line, &size, buf->remaining))
 						buf->next += buf->remaining, buf->remaining = 0;
 					else
-						break;
+						break;/* a break line */
 				}
 				else
 				{
@@ -164,5 +163,5 @@ char *_getline(const int fd)
 			size = 0;
 		}
 	}
-	return (line);
+	return (line);/* return */
 }
