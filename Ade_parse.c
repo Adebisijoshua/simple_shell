@@ -1,12 +1,12 @@
 #include "hsh.h"
 
 /**
- * parse - parse input
- * @info: shell information
+ * parse -  input parse value
+ * @info: infromation of the shell
  *
- * Description: This function expands aliases, variables, and word splitting
+ * Description: function expands aliases, variables, and word splitting
  *
- * Return: the final number of tokens
+ * Return: the final
  */
 int parse(info_t *info)
 {
@@ -46,5 +46,5 @@ int parse(info_t *info)
 		cmd = cmd->next;
 		++n;
 	}
-	return (n);
+	return (n); /* return value */
 }
