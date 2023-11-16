@@ -1,9 +1,9 @@
 #include "hsh.h"
 
 /**
- * main - entry point
- * @argc: the argument count
- * @argv: the argument vector
+ * main - entry
+ * @argc: argument count
+ * @argv: argument vector
  *
  * Return: Always 0
  */
@@ -15,6 +15,7 @@ int main(int argc, char **argv)
 
 	while (read_input(info))
 	{
+		/* parse value */
 		parse(info);
 		while ((info->tokens = pop_cmd(&(info->commands))))
 		{
