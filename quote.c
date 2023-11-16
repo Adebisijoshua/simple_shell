@@ -9,25 +9,26 @@
 quote_state_t quote_state(char c)
 {
 	if (_isspace(c))
-		return (QUOTE_NONE);
+		return (QUOTE_NONE);/* Return QUOTE_NONE for whitespace characters */
 	if (c == '"')
-		return (QUOTE_DOUBLE);
+		return (QUOTE_DOUBLE);/* Return QUOTE_DOUBLE for double quotes */
 	if (c == '\'')
-		return (QUOTE_SINGLE);
+		return (QUOTE_SINGLE);/* Return QUOTE_SINGLE for single quotes */
 	if (c == '\\')
-		return (QUOTE_ESCAPE);
-	return (QUOTE_WORD);
+		return (QUOTE_ESCAPE);/* Return QUOTE_ESCAPE for backslashes */
+	return (QUOTE_WORD);/* Return QUOTE_WORD for other characters (word characters)*/
 }
 
 
 /**
- * quote_state_f - get the function associated with a given state
- * @s: state
+ * quote_state_f - given state of a function
+ * @s: state of a function
  *
- * Return: the state associated with c
+ * Return: give back the state associated with it
  */
 quote_state_fp quote_state_f(quote_state_t s)
 {
+	/* switch, case and return case */
 	switch (s)
 	{
 	case QUOTE_NONE:
@@ -46,13 +47,13 @@ quote_state_fp quote_state_f(quote_state_t s)
 
 
 /**
- * quote_state_len - get the length of a given state
+ * quote_state_len - length of a given state
  * @str: string
  * @state: state
  *
- * Return: the state associated with c
+ * Return: state associated with it
  */
 size_t quote_state_len(const char *str, quote_state_t state)
 {
-	return (quote_state_f(state)(str, NULL));
+	return (quote_state_f(state)(str, NULL));/* Return Null */
 }
