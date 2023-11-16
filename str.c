@@ -71,43 +71,45 @@ ssize_t _strlen(const char *str)
 
 
 /**
- * _strcmp - compare two strings
- * @s1: a string to compare
- * @s2: the other string to compare
- * Return: 0 if s1 matches s2,
- * otherwise an integer less than 0 if s1 is less than s2,
- * otherwise an integer greater than 0 if s1 is greater than s2.
+ * _strcmp - compare two strings together
+ * @s1: The first string to compare
+ * @s2: The second string to compare
+ * Return: 0 value if s1 tallys s2,
+ * put something else if it is not.
+ * integer greater than 0 if s1 is greater than s2.
  */
 int _strcmp(const char *s1, const char *s2)
 {
+	/* declare the strings */
 	for (; *s1 && *s2; ++s1, ++s2)
 	{
-		if (*s1 != *s2)
+		if (*s1 != *s2) /* I need to correct my error here */
 			return (*s1 - *s2);
 	}
 
+	/* return values for the two strings */
 	if (*s1)
-		return (1);
+		return (2);
 	if (*s2)
 		return (-1);
 
-	return (0);
+	return (0); /* here is the return value */
 }
 
 
 /**
- * _strcpy - copy a string
- * @dest: destination
- * @src: source
- * Return: a pointer to dest
+ * _strcpy - duplicate a string
+ * @dest: show the destination
+ * @src: provide source
+ * Return: a pointer to destination
  */
 char *_strcpy(char *dest, const char *src)
 {
-	char *pos = dest;
+	char *pos = dest; /* declare address for destination */
 
 	while (*src)
 		*pos++ = *src++;
-	*pos = '\0';
+	*pos = '\0';/* The string address */
 
-	return (dest);
+	return (dest);/* return destination */
 }
