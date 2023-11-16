@@ -18,11 +18,11 @@ ssize_t _memchr(const void *src, unsigned char chr, size_t n)
 		while (n--)
 		{
 			if (mem[i] == chr)
-				return (i);
+				return (i);/* Return the index of the first occurrence of chr */
 			i += 1;
 		}
 	}
-	return (-1);
+	return (-1);/* Return -1 if chr does not occur in the first n elements of src */
 }
 
 /**
@@ -50,17 +50,18 @@ void *_memcpy(void *dest, const void *src, size_t n)
 }
 
 /**
- * _memdup - duplicate a memory area
- * @src: a pointer to the start of the source area
- * @n: the number of bytes to duplicate
- * Return: If memory allocation fails, return NULL. Otherwise, return a
- * pointer to the start of the duplicated memory.
+ * _memdup - double a memory area
+ * @src: address to the start of the source area
+ * @n: number of bytes to duplicate
+ * Return: assumeallocation fails, return NULL. Otherwise, return b
+ * pointer of the start of the duplicated memory.
  */
 void *_memdup(const void *src, size_t n)
 {
+	/* declare variables */
 	void *dup = malloc(n);
-	unsigned char *w_pos = dup;
 	const unsigned char *r_pos = src;
+	unsigned char *w_pos = dup;
 
 	if (dup)
 	{
@@ -71,8 +72,8 @@ void *_memdup(const void *src, size_t n)
 }
 
 /**
- * _memset - fill a region of memory with a given value
- * @dest: pointer to the beginning of the region
+ * _memset - close a region of memory with a given value
+ * @dest: address to beginning of the region
  * @chr: value to write to the region
  * @n: number of bytes to write
  * Return: dest
@@ -84,7 +85,7 @@ void *_memset(void *dest, unsigned char chr, size_t n)
 	if (dest)
 	{
 		while (n--)
-			*mem++ = chr;
+			*mem++ = chr;/* Fill the region with chr for n bytes */
 	}
 	return (dest);
 }
