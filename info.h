@@ -1,32 +1,32 @@
 #ifndef _INFO_H_
 #define _INFO_H_
 
+/* The headers here */
 #include <stdlib.h>
 #include <unistd.h>
-
+#include "types.h"
 #include "alias.h"
 #include "command.h"
 #include "env.h"
-#include "error.h"
 #include "getline.h"
+#include "error.h"
 #include "history.h"
 #include "list.h"
 #include "string.h"
 #include "tokens.h"
-#include "types.h"
 
 extern char **environ;
 
 /**
-  * struct info - shell state
-  * @interactive: arguments passed
-  * @argc: arguments passed
-  * @argv: arguments passed
-  * @file: arguments passed
-  * @fileno: arguments passed
+  * struct info - shell state info
+  * @interactive: arguments intersctive
+  * @argc: arguments
+  * @argv: arguments done
+  * @file: arguments done
+  * @fileno: arguments done
   * @status: arguments passed
   * @line: arguments passed
-  * @lineno: arguments passed
+  * @lineno: arguments done
   * @tokens: arguments passed
   * @pid: arguments passed
   * @cwd: arguments passed
@@ -34,31 +34,32 @@ extern char **environ;
   * @env: arguments passed
   * @path: arguments passed
   * @aliases: arguments passed
-  * @history: arguments passed
-  * @commands: arguments passed
+  * @history: give arguments history
+  * @commands: give arguments command
   */
 struct info
 {
-	int interactive;
+	/* here goes the prototype */
 	int argc;
+	int fileno;
 	char **argv;
 	char *file;
-	int fileno;
 	int status;
 	char *line;
 	size_t lineno;
 	char **tokens;
 	pid_t pid;
 	char *cwd;
-	char *exe;
 	env_t *env;
 	list_t *path;
+	 int interactive;
+	char *exe;
 	alias_t *aliases;
 	history_t *history;
 	cmdlist_t *commands;
 };
 
-info_t *init_info(int argc, char **argv);
 int free_info(info_t *info);
+info_t *init_info(int argc, char **argv);
 
-#endif /* _INFO_H_ */
+#endif
